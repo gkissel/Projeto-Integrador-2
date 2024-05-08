@@ -29,6 +29,11 @@ void ADiamondSquare::OnConstruction(const FTransform& Transform)
 {
     Super::OnConstruction(Transform);
 
+    Regenerate();
+}
+
+void ADiamondSquare::Regenerate()
+{
     Vertices.Reset();
     Triangles.Reset();
     UV0.Reset();
@@ -58,6 +63,7 @@ void ADiamondSquare::BeginPlay()
             // TerrainSettingsWidget->BindWidgetEvent(TEXT("OnXSizeChanged"), FOnClicked::CreateUObject(this, &ADiamondSquare::OnXSizeChanged));
         }
     }
+    
 }
 
 void ADiamondSquare::CreateVertices()
@@ -172,18 +178,62 @@ void ADiamondSquare::CalculateNormals()
     }
 }
 
+void ADiamondSquare::UpdateXSize(int NewXSize)
+{
+    XSize = NewXSize;
+    Regenerate();
+}
+
+void ADiamondSquare::UpdateYSize(int NewYSize)
+{
+    YSize = NewYSize;
+    Regenerate();
+}
+
+void ADiamondSquare::UpdateZMin(int NewZMin)
+{
+    ZMin = NewZMin;
+    Regenerate();
+}
+
+void ADiamondSquare::UpdateZMax(int NewZMax)
+{
+    ZMax = NewZMax;
+    Regenerate();
+}
+
+void ADiamondSquare::UpdateScale(float NewScale)
+{
+    Scale = NewScale;
+    Regenerate();
+}
+
+void ADiamondSquare::UpdateUVScale(float NewUVScale)
+{
+    UVScale = NewUVScale;
+    Regenerate();
+}
+
 void ADiamondSquare::UpdateRoughness(float NewRoughness)
 {
     Roughness = NewRoughness;
-   
+    Regenerate();
 }
 
-void ADiamondSquare::OnYSizeChanged(int NewYSize)
+void ADiamondSquare::UpdatePerlinNoiseScale(float NewPerlinNoiseScale)
 {
-    YSize = NewYSize;
-
+    PerlinNoiseScale = NewPerlinNoiseScale;
+    Regenerate();
 }
 
-// Implement similar functions for other parameters
+void ADiamondSquare::UpdateTrianglesNumber(int NewTrianglesNumber)
+{
+    TrianglesNumber = NewTrianglesNumber;
+    Regenerate();
+}
 
-// Implement the functions to handle parameter changes from the widget
+void ADiamondSquare::UpdateMaterial(UMaterialInterface* NewMaterial)
+{
+    Material = NewMaterial;
+    Regenerate();
+}

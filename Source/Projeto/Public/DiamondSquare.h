@@ -47,7 +47,34 @@ public:
     int TrianglesNumber;
 
     UFUNCTION(BlueprintCallable, Category = "DiamondSquare")
+    void UpdateXSize(int NewXSize);
+
+    UFUNCTION(BlueprintCallable, Category = "DiamondSquare")
+    void UpdateYSize(int NewYSize);
+
+    UFUNCTION(BlueprintCallable, Category = "DiamondSquare")
+    void UpdateZMin(int NewZMin);
+
+    UFUNCTION(BlueprintCallable, Category = "DiamondSquare")
+    void UpdateZMax(int NewZMax);
+
+    UFUNCTION(BlueprintCallable, Category = "DiamondSquare")
+    void UpdateScale(float NewScale);
+
+    UFUNCTION(BlueprintCallable, Category = "DiamondSquare")
+    void UpdateUVScale(float NewUVScale);
+
+    UFUNCTION(BlueprintCallable, Category = "DiamondSquare")
     void UpdateRoughness(float NewRoughness);
+
+    UFUNCTION(BlueprintCallable, Category = "DiamondSquare")
+    void UpdatePerlinNoiseScale(float NewPerlinNoiseScale);
+
+    UFUNCTION(BlueprintCallable, Category = "DiamondSquare")
+    void UpdateTrianglesNumber(int NewTrianglesNumber);
+
+    UFUNCTION(BlueprintCallable, Category = "DiamondSquare")
+    void UpdateMaterial(UMaterialInterface* NewMaterial);
 
 protected:
     virtual void BeginPlay() override;
@@ -55,6 +82,7 @@ protected:
 
     UPROPERTY(EditAnywhere, Category = "DiamondSquare")
     UMaterialInterface* Material;
+    void Regenerate();
 
 private:
     UProceduralMeshComponent* ProceduralMesh;
@@ -69,10 +97,5 @@ private:
     void CreateTriangles();
     void DiamondSquareAlgorithm(TArray<TArray<float>>& grid, int x1, int y1, int x2, int y2);
     void CalculateNormals();
-
-   
-    UFUNCTION()
-    void OnYSizeChanged(int NewYSize);
-
 
 };
