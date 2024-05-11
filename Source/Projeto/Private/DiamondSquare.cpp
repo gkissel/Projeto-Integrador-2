@@ -58,9 +58,6 @@ void ADiamondSquare::BeginPlay()
         if (TerrainSettingsWidget)
         {
             TerrainSettingsWidget->AddToViewport();
-            // You might want to bind events here to handle parameter changes from the widget
-            // For example:
-            // TerrainSettingsWidget->BindWidgetEvent(TEXT("OnXSizeChanged"), FOnClicked::CreateUObject(this, &ADiamondSquare::OnXSizeChanged));
         }
     }
     
